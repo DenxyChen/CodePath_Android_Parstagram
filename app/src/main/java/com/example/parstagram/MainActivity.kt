@@ -47,6 +47,12 @@ class MainActivity : AppCompatActivity() {
                 submitPost(description, user, photoFile!!)
         }
 
+        findViewById<Button>(R.id.btn_logout).setOnClickListener {
+            ParseUser.logOut()
+            val currentUser = ParseUser.getCurrentUser() // this will now be null
+            Log.i(TAG, "Current user: ${currentUser}")
+        }
+
 //        queryPosts()
     }
 
