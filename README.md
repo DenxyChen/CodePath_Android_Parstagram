@@ -33,7 +33,7 @@ GIF created with [ScreenToGif](https://www.screentogif.com/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+App so far was pretty straightforward. I attempted to improve user experience by resetting fields after upload but this MainActivity to crash the app on startup.
 
 ## Open-source libraries used
 
