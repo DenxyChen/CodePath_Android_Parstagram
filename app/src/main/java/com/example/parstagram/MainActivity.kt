@@ -48,9 +48,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.btn_logout).setOnClickListener {
-            ParseUser.logOut()
-            val currentUser = ParseUser.getCurrentUser() // this will now be null
-            Log.i(TAG, "Current user: ${currentUser}")
+            logoutUser()
         }
 
 //        queryPosts()
@@ -71,6 +69,16 @@ class MainActivity : AppCompatActivity() {
                 Log.i(TAG, "Successfully saved post")
             }
         }
+    }
+
+    private fun logoutUser() {
+        ParseUser.logOut()
+        val currentUser = ParseUser.getCurrentUser() // this will now be null
+        Log.i(TAG, "Current user: ${currentUser}")
+        Toast.makeText(this, "Successfully logged out", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this@MainActivity, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
