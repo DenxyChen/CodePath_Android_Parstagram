@@ -4,6 +4,9 @@ import com.parse.ParseClassName
 import com.parse.ParseFile
 import com.parse.ParseObject
 import com.parse.ParseUser
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 // Description: String
@@ -36,9 +39,18 @@ class Post : ParseObject() {
         put(KEY_USER, user)
     }
 
+    fun getDate(): String? {
+        val date = getCreatedAt()
+
+        val formatter = SimpleDateFormat("MM-dd-yyyy 'at' hh:mm aaa")
+        val dateString = formatter.format(date)
+        return dateString.substring(0, dateString.length)
+    }
+
     companion object {
         const val KEY_DESCRIPTION = "description"
         const val KEY_IMAGE = "image"
         const val KEY_USER = "user"
+        const val KEY_DATE = "createdAt"
     }
 }

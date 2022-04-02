@@ -29,16 +29,19 @@ class PostAdapter(val context: Context, val posts: List<Post>): RecyclerView.Ada
         val tvUsername: TextView
         val ivPhoto: ImageView
         val tvDescription: TextView
+        val tvDate: TextView
 
         init {
             tvUsername = itemView.findViewById(R.id.tvUsername)
             ivPhoto = itemView.findViewById(R.id.ivPhoto)
             tvDescription = itemView.findViewById(R.id.tvDescription)
+            tvDate = itemView.findViewById(R.id.tvDate)
         }
 
         fun bind(post: Post) {
             tvDescription.text = post.getDescription()
             tvUsername.text = post.getUser()?.username
+            tvDate.text = "Created at: ${post.getDate()}"
 
             Glide.with(itemView.context).load(post.getImage()?.url).into(ivPhoto)
         }

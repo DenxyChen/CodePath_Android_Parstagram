@@ -3,12 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/dneba/Android/Parstagram/app/src/main/res/drawable/compose_selector.xml" value="0.1005" />
+        <entry key="..\:/Users/dneba/Android/Parstagram/app/src/main/res/drawable/ic_baseline_add_a_photo_24.xml" value="0.2275" />
+        <entry key="..\:/Users/dneba/Android/Parstagram/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.2275" />
+        <entry key="..\:/Users/dneba/Android/Parstagram/app/src/main/res/drawable/profile_selector.xml" value="0.2275" />
         <entry key="..\:/Users/dneba/Android/Parstagram/app/src/main/res/layout/activity_login.xml" value="0.24635416666666668" />
         <entry key="..\:/Users/dneba/Android/Parstagram/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/dneba/Android/Parstagram/app/src/main/res/layout/fragment_compose.xml" value="0.25" />
         <entry key="..\:/Users/dneba/Android/Parstagram/app/src/main/res/layout/fragment_feed.xml" value="0.25" />
+        <entry key="..\:/Users/dneba/Android/Parstagram/app/src/main/res/layout/home_selector.xml" value="0.2359375" />
         <entry key="..\:/Users/dneba/Android/Parstagram/app/src/main/res/layout/item_post.xml" value="0.264" />
         <entry key="..\:/Users/dneba/Android/Parstagram/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.25" />
+        <entry key="..\:/Users/dneba/Android/Parstagram/app/src/main/res/xml/home_icon.xml" value="0.10989583333333333" />
       </map>
     </option>
   </component>

@@ -33,6 +33,7 @@ class ComposeFragment : Fragment() {
 
     lateinit var ivPreview: ImageView
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

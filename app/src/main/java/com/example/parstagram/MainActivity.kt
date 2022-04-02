@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        getSupportActionBar()?.hide();
+
         val fragmentManager: FragmentManager = supportFragmentManager
 
         // Set description of the post

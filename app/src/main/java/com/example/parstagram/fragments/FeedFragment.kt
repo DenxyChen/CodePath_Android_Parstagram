@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.parstagram.MainActivity
 import com.example.parstagram.Post
 import com.example.parstagram.PostAdapter
@@ -21,6 +22,8 @@ open class FeedFragment : Fragment() {
     lateinit var rvPosts : RecyclerView
 
     lateinit var adapter: PostAdapter
+
+    lateinit var swipeContainer: SwipeRefreshLayout
 
     var allPosts: MutableList<Post> = mutableListOf()
 
@@ -42,6 +45,15 @@ open class FeedFragment : Fragment() {
 
         rvPosts.layoutManager = LinearLayoutManager(requireContext())
 
+        swipeContainer = view.findViewById(R.id.swipeContainer)
+
+        swipeContainer.setOnRefreshListener {
+            // Your code to refresh the list here.
+            // Make sure you call swipeContainer.setRefreshing(false)
+            // once the network request has completed successfully.
+            queryPosts()
+        }
+
         queryPosts()
     }
 
@@ -60,13 +72,10 @@ open class FeedFragment : Fragment() {
                     Log.e(TAG, "Error fetching posts")
                 } else {
                     if (posts != null) {
-                        for (post in posts) {
-                            Log.i(TAG, "Post: " + post.getDescription()
-                                    + " , username: " + post.getUser()?.username)
-                        }
-
+                        allPosts.clear()
                         allPosts.addAll(posts)
                         adapter.notifyDataSetChanged()
+                        swipeContainer.setRefreshing(false)
                     }
                 }
             }

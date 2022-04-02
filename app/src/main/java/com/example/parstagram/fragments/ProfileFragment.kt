@@ -23,13 +23,10 @@ class ProfileFragment: FeedFragment() {
                     Log.e(TAG, "Error fetching posts")
                 } else {
                     if (posts != null) {
-                        for (post in posts) {
-                            Log.i(TAG, "Post: " + post.getDescription()
-                                    + " , username: " + post.getUser()?.username)
-                        }
-
+                        allPosts.clear()
                         allPosts.addAll(posts)
                         adapter.notifyDataSetChanged()
+                        swipeContainer.setRefreshing(false)
                     }
                 }
             }

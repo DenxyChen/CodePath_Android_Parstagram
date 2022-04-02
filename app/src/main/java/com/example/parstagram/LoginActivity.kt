@@ -15,6 +15,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        getSupportActionBar()?.hide()
+
         // Check if user is logged in
         // If they are, take them to MainActivity
         if(ParseUser.getCurrentUser() != null) {
