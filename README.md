@@ -27,13 +27,13 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://github.com/DenxyChen/CodePath_Android_Parstagram/blob/master/demo/instagram-week-5.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/DenxyChen/CodePath_Android_Parstagram/blob/master/demo/instagram-week-5-updated.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [ScreenToGif](https://www.screentogif.com/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+App so far was pretty straightforward. I attempted to improve user experience by resetting fields after upload but this MainActivity to crash the app on startup.
 
 ## Open-source libraries used
 
