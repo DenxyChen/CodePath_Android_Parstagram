@@ -6,17 +6,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parstagram.MainActivity
 import com.example.parstagram.Post
+import com.example.parstagram.PostAdapter
 import com.example.parstagram.R
 import com.parse.FindCallback
 import com.parse.ParseException
 import com.parse.ParseQuery
 
-class FeedFragment : Fragment() {
+open class FeedFragment : Fragment() {
 
     lateinit var rvPosts : RecyclerView
+
+    lateinit var adapter: PostAdapter
+
+    var allPosts: MutableList<Post> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,17 +37,23 @@ class FeedFragment : Fragment() {
 
         rvPosts = view.findViewById(R.id.rvPosts)
 
+        adapter = PostAdapter(requireContext(), allPosts)
+        rvPosts.adapter = adapter
+
+        rvPosts.layoutManager = LinearLayoutManager(requireContext())
+
         queryPosts()
     }
 
     // Query for all posts in server
-    fun queryPosts() {
+    open fun queryPosts() {
 
         // Specify which class to query
         val query: ParseQuery<Post> = ParseQuery.getQuery(Post::class.java)
 
         // Find all Post objects
         query.include(Post.KEY_USER)
+        query.addDescendingOrder("createdAt")
         query.findInBackground(object: FindCallback<Post> {
             override fun done(posts: MutableList<Post>?, e: ParseException?) {
                 if (e != null) {
@@ -49,10 +61,12 @@ class FeedFragment : Fragment() {
                 } else {
                     if (posts != null) {
                         for (post in posts) {
-                            Log.i(
-                                TAG, "Post: " + post.getDescription()
+                            Log.i(TAG, "Post: " + post.getDescription()
                                     + " , username: " + post.getUser()?.username)
                         }
+
+                        allPosts.addAll(posts)
+                        adapter.notifyDataSetChanged()
                     }
                 }
             }
