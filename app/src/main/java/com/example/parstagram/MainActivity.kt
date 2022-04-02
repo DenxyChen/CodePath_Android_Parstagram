@@ -16,6 +16,7 @@ import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.parstagram.fragments.ComposeFragment
+import com.example.parstagram.fragments.FeedFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.parse.*
 import java.io.File
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             var fragmentToShow: Fragment? = null
             when (item.itemId) {
                 R.id.action_home -> {
-                    Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
+                    fragmentToShow = FeedFragment()
                 }
 
                 R.id.action_compose -> {
@@ -59,33 +60,11 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+        findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.action_home
+
         // An ImageView to show the picture the user has taken
 
 //        queryPosts()
-    }
-
-    // Query for all posts in server
-    fun queryPosts() {
-
-        // Specify which class to query
-        val query: ParseQuery<Post> = ParseQuery.getQuery(Post::class.java)
-
-        // Find all Post objects
-        query.include(Post.KEY_USER)
-        query.findInBackground(object: FindCallback<Post> {
-            override fun done(posts: MutableList<Post>?, e: ParseException?) {
-                if (e != null) {
-                    Log.e(TAG, "Error fetching posts")
-                } else {
-                    if (posts != null) {
-                        for (post in posts) {
-                            Log.i(TAG, "Post: " + post.getDescription()
-                                    + " , username: " + post.getUser()?.username)
-                        }
-                    }
-                }
-            }
-        })
     }
 
     companion object {

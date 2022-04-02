@@ -23,7 +23,7 @@ class Post : ParseObject() {
     fun getImage(): ParseFile? {
         return getParseFile(KEY_IMAGE)
     }
-
+e
     fun setImage(parsefile: ParseFile) {
         put(KEY_IMAGE, parsefile)
     }
